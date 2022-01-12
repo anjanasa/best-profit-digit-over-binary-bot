@@ -1,0 +1,137 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="true">
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" collapsed="true">
+    <field name="MARKET_LIST">synthetic_index</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">1HZ100V</field>
+    <field name="TRADETYPECAT_LIST">digits</field>
+    <field name="TRADETYPE_LIST">overunder</field>
+    <field name="TYPE_LIST">DIGITOVER</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">FALSE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="uc`%a(+KhH*%/g%Q,oi{">
+        <field name="VAR" id="7!95j,[a1,n@P=}=3~#V" variabletype="">stake</field>
+        <value name="VALUE">
+          <block type="text_prompt_ext" id="i|oP37{1O3Y00(+KYDuN">
+            <mutation type="NUMBER"></mutation>
+            <field name="TYPE">NUMBER</field>
+            <value name="TEXT">
+              <shadow type="text" id="#~meZcEM3?.{As_bvZ4K">
+                <field name="TEXT">enter your stake</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="triObHt8V;H;Dz6xVB+n">
+            <field name="VAR" id="7_7oLLN(f~Z)P#p}_0xI" variabletype="">take profit</field>
+            <value name="VALUE">
+              <block type="text_prompt_ext" id=".m%5T4~uI8hOG_8{6]@9">
+                <mutation type="NUMBER"></mutation>
+                <field name="TYPE">NUMBER</field>
+                <value name="TEXT">
+                  <shadow type="text" id="Jn)bo]x+N~0s@6-`kWtm">
+                    <field name="TEXT">enter your expected profit</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="KZeo/VlX+WV^DVAr{P|q">
+                <field name="VAR" id="V{3HVze-%QRf%#j7C*:w" variabletype="">stop loss</field>
+                <value name="VALUE">
+                  <block type="text_prompt_ext" id="M-,49D7EKn=$u0n~sGJS">
+                    <mutation type="NUMBER"></mutation>
+                    <field name="TYPE">NUMBER</field>
+                    <value name="TEXT">
+                      <shadow type="text" id="`wyO$+|6:zYjg3nocYl3">
+                        <field name="TEXT">enter your stop loss</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="0]MBVnYP|+ZS^kLac8[I">
+                    <field name="VAR" id="bu1.-%iHML*n@3s-WKP{" variabletype="">smartRisk</field>
+                    <value name="VALUE">
+                      <block type="smartrisk_settings" id="=x:Zp4;!%?z*Ft;!X;)W">
+                        <field name="STRATEGY">smart</field>
+                        <value name="INVESTMENT">
+                          <shadow type="math_number" id="c8(tK[8=mUjOjY:=l7)-">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id=":d!Bqk:oh/oo]J;(+3;@">
+                            <field name="VAR" id="7!95j,[a1,n@P=}=3~#V" variabletype="">stake</field>
+                          </block>
+                        </value>
+                        <value name="TAKE_PROFIT">
+                          <shadow type="math_number" id="*V30)Y)m^hORW0R#!D$,">
+                            <field name="NUM">10</field>
+                          </shadow>
+                          <block type="variables_get" id="qlDa[Z!y}zQ2yvxg7pxB">
+                            <field name="VAR" id="7_7oLLN(f~Z)P#p}_0xI" variabletype="">take profit</field>
+                          </block>
+                        </value>
+                        <value name="STOP_LOSS">
+                          <shadow type="math_number" id="1hC:rY~?V=Ti?QI7O@br">
+                            <field name="NUM">5</field>
+                          </shadow>
+                          <block type="variables_get" id="H3x/6s?GYR5Y1SNaS7}y">
+                            <field name="VAR" id="V{3HVze-%QRf%#j7C*:w" variabletype="">stop loss</field>
+                          </block>
+                        </value>
+                        <value name="PARAMETERS">
+                          <block type="lists_create_with" id="0?i%XlLP3[8=8B@rN48n">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="math_number" id="rFtN+i4f]1#Rp`]NBmyD">
+                                <field name="NUM">2.5</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="math_number" id="Sq5DlBws.3{D@qEq`85Y">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <field name="BARRIEROFFSETTYPE_LIST">+</field>
+        <field name="SECONDBARRIEROFFSETTYPE_LIST">-</field>
+        <value name="DURATION">
+          <shadow type="math_number" id="~9n1R@L+M3Bs971VMZFf">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="smartrisk_query" id="Y0xZc;1PL@](=:sMh2uk">
+            <field name="SMARTRISK_LIST">stake</field>
+            <field name="SMARTRISK_VAR" id="bu1.-%iHML*n@3s-WKP{" variabletype="">smartRisk</field>
+          </block>
+        </value>
+        <value name="PREDICTION">
+          <shadow type="math_number" id="BL]p8hLbF==zUuNIYC`d">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>
